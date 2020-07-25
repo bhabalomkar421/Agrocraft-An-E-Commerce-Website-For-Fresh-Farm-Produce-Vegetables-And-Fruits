@@ -360,8 +360,21 @@ if (isset($_POST['register'])) {
 		values ('$name','$phonenumber','$address','$company_name','$license','$account','$pan',
 		'$mail','$username','$encryption')";
 
-		$run_register_query = mysqli_query($con, $query);
-		echo "<script>alert('SucessFully Inserted');</script>";
+        $run_register_query = mysqli_query($con, $query);
+
+        //sending email for thanks for connecting with agrocraft
+        $to_email = $mail;
+        $subject = "thanks for connecting with AgroCraft";
+        $body = "Hello.., Thanks for connecting with AgroCraft,\nHope our services would always delight you !!!\nAgrocraft - \n...";
+        $headers = "From: intmain1221@gmail.com";
+
+        if (mail($to_email, $subject, $body, $headers)) {
+            echo "Email successfully sent to $to_email...";
+        } else {
+            echo "Email sending failed...";
+        }
+
+		echo "<script>alert('SucessFully Register...');</script>";
 		echo "<script>window.open('BuyerLogin.php','_self')</script>";
 	} else if (strcmp($password, $confirmpassword) != 0) {
 		echo "<script>

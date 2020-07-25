@@ -437,3 +437,14 @@
   </body>
 
   </html>
+
+  <?php 
+     //sending email for order placed
+     //store mail
+     $mail = 'intmain1221@gmail.com'       
+     $to_email = $mail;
+     $subject = "your order has been placed...!!!";
+     $body = "Hello.., Thanks for connecting with AgroCraft,\nHope you are enjoying our services!!!\nyour order has been placed and will shipped soon...\nAgrocraft - \n...";
+     $headers = "From: intmain1221@gmail.com";
+
+  ?>
