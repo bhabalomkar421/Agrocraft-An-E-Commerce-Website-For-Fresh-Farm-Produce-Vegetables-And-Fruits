@@ -1,5 +1,6 @@
 <?php
 include("../Functions/functions.php");
+
 ?>
 
 
@@ -389,6 +390,7 @@ include("../Functions/functions.php");
                         $product_price = $pp_price['product_price'];
                         $subtotal = $_SESSION['qtycart'][$i] * $product_price;
 
+
             ?>
 
 
@@ -399,7 +401,7 @@ include("../Functions/functions.php");
                                         <i style="padding: 4px;" class="icon right  fas fa-plus"></label></a></i></td>
                             </td> -->
 
-
+                           
                         <tbody>
                             <tr>
                                 <td data-label="S.No" style="font-size:20px;"><?php echo $i + 1; ?></td>

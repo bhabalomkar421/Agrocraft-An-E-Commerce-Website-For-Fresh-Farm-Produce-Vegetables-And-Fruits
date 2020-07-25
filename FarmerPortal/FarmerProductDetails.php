@@ -800,7 +800,7 @@ include("../Functions/functions.php");
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <?php
                          if (isset($_SESSION['phonenumber'])) {
-                              echo "<a href='FarmerProfile.php' class='dropdown-item' style='padding-right:-20px;'>Profile</a>";
+                              echo "<a href='farmerprofile2.php' class='dropdown-item' style='padding-right:-20px;'>Profile</a>";
                               echo "<a href='Orders.php' class='dropdown-item' style='padding-right:-20px;'>Orders</a>";
                               echo "<a href='logout.php' class='dropdown-item' style='padding-right:-20px;'>Logout</a>";
                          } else {
@@ -819,9 +819,11 @@ include("../Functions/functions.php");
      $sess_phone_number = $_SESSION['phonenumber'];
      // getFarmerProductDetails();
      global $con;
+     
      if (isset($_GET['id'])) {
           $prod_id = $_GET['id'];
           $query = "select * from products where product_id=" . $prod_id;
+          
           $run_query = mysqli_query($con, $query);
           $resultCheck = mysqli_num_rows($run_query);
           if ($resultCheck > 0) {
@@ -900,7 +902,7 @@ include("../Functions/functions.php");
 
                                              <div class='row' style='padding:7px; margin-bottom:15px;' >
                                                   <div class='col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 aligncenter'> <a href='EditProduct.php?id=$prod_id' class='btn btn-warning border-secondary' style='color:black'><b>Edit Product</b></a></div>
-                                                  <div class='col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 aligncenter'> <a href='Transactions.php' class='btn btn-warning border-secondary' style='color:black'><b>My Transaction</b></a></div>
+                                                  <div class='col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 aligncenter'> <a class='btn btn-warning border-secondary' value = 'delete' style='color:black'><b>Delete</b></a></div>
                                              </div>
                                         </div>         
                                    </div>
@@ -925,6 +927,7 @@ include("../Functions/functions.php");
      } else {
           echo "<br><br><hr><h1 align = center>Product Not Uploaded !</h1><br><br><hr>";
      }
+     
      ?>
 
 
@@ -965,3 +968,13 @@ include("../Functions/functions.php");
 </body>
 
 </html>
+<?php
+
+$sess_phone_number = $_SESSION['phonenumber'];
+if (isset($_GET['delete'])) {
+     $product_id = $_GET['id'];
+     $delete_product = "delete from products where  product_id = '$product_id'";
+     $run_delete = mysqli_query($con, $delete_product);
+
+     echo "<script>window.open('MyProducts.php','_self')</script>";
+}

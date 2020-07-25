@@ -416,7 +416,7 @@ include("../Functions/functions.php");
 
 
     <?php
-
+    addSaveForLater();
     if (isset($_GET['id'])) {
         global $con;
         $product_id  = $_GET['id'];
@@ -446,7 +446,7 @@ include("../Functions/functions.php");
                 $address = $rows['farmer_address'];
                 $state = $rows['farmer_state'];
                 $district = $rows['farmer_district'];
-
+                
 
                 echo "
                 <div class='container'>
@@ -488,12 +488,25 @@ include("../Functions/functions.php");
                                             <input type='number' name='qty' placeholder=1 class='form-control quantitynumber' aria-label='Default' aria-describedby='inputGroup-sizing-default'>
                                         </div>
                                     </div>
+                                </form>
+                                <form actions='' method='post'>
                                     <div class='row'>
                                         <div class='col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12'> 
-                                            <button name='cart' type='submit' class='btn btn-warning border-secondary addtocart' style='color:black'><b>Add to cart</b><i class='fa' style='font-size:17px; '>&#61562;</i></button>
+                                            <button name='cart' type='submit' class='btn btn-warning border-secondary addtocart' style='color:black'>
+                                                <b>Add to cart</b>
+                                                <i class='fa' style='font-size:17px; '>&#61562;</i>
+                                            </button>
                                         </div>
-                                        <div class='col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12'> <a href='#' class='btn btn-warning border-secondary saveforlater' style='color:black'><b>Save For later</b><img src='saveforlater4.png' class='ml-1 mb-1'></a></div>
+                                        </div>
+                                </form>
+                                <form actions='' method='post'>
+                                    <div class='col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12'> 
+                                        <a href='./ProductDetails.php?save_for_later=$product_id' class='btn btn-warning border-secondary saveforlater' style='color:black'>
+                                            <b>Save For later</b>
+                                            <img src='saveforlater4.png' class='ml-1 mb-1'>
+                                        </a>
                                     </div>
+                                    
                                 </form>
                                 <div class='row text-center ml-4 mt-3'>
                                     <i class='fa fa-truck fa-2x'></i>
@@ -544,7 +557,6 @@ include("../Functions/functions.php");
     }
 
     if (isset($_POST['cart'])) {
-
         if (isset($_POST['quantity'])) {
             $qty = $_POST['quantity'];
         } else {
@@ -570,6 +582,12 @@ include("../Functions/functions.php");
             echo "<script>window.alert('Please Login First!');</script>";
         }
     }
+
+
+    if (isset($_POST['saveforlater'])) {
+        addSaveForLater();
+    }
+
     ?>
 
 

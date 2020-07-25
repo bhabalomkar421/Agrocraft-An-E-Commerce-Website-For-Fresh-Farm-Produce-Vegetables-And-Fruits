@@ -1,7 +1,7 @@
 <?php
-include("../Includes/db.php");
-session_start();
-$sessphonenumber = $_SESSION['phonenumber'];
+    include("../Includes/db.php");
+    session_start();
+    $sessphonenumber = $_SESSION['phonenumber'];
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,6 @@ $sessphonenumber = $_SESSION['phonenumber'];
     <script src="https://kit.fontawesome.com/c587fc1763.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../portal_files/bootstrap.min.css">
-
 
     <title>Farmer - Insert Product</title>
     <style>
@@ -69,9 +68,7 @@ $sessphonenumber = $_SESSION['phonenumber'];
                                 <h4 class="text-center font-weight-bold">Insert Your New Product <i class="fas fa-leaf"></i></h4>
                             </div>
                             <div class="card-body">
-
                                 <form name="my-form" action="InsertProduct.php" method="post" enctype="multipart/form-data">
-
                                     <div class="form-group row">
                                         <label for="full_name" class="col-md-4 col-form-label text-md-right text-center font-weight-bolder">Product Title:</label>
                                         <div class="col-md-6">
@@ -85,20 +82,19 @@ $sessphonenumber = $_SESSION['phonenumber'];
                                             <input type="text" id="full_name" class="form-control" name="product_stock" placeholder="Enter Product Stock" required>
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <label for="user_name" class="col-md-4 col-form-label text-md-right text-center font-weight-bolder">Product Categories:</label>
                                         <div class="col-md-6">
                                             <select name="product_cat" required>
                                                 <option>Select a Category</option>
                                                 <?php
-                                                $get_cats = "select * from categories";
-                                                $run_cats =  mysqli_query($con, $get_cats);
-                                                while ($row_cats = mysqli_fetch_array($run_cats)) {
-                                                    $cat_id = $row_cats['cat_id'];
-                                                    $cat_title = $row_cats['cat_title'];
-                                                    echo "<option value='$cat_id'>$cat_title</option>";
-                                                }
+                                                    $get_cats = "select * from categories";
+                                                    $run_cats =  mysqli_query($con, $get_cats);
+                                                    while ($row_cats = mysqli_fetch_array($run_cats)) {
+                                                        $cat_id = $row_cats['cat_id'];
+                                                        $cat_title = $row_cats['cat_title'];
+                                                        echo "<option value='$cat_id'>$cat_title</option>";
+                                                    }
                                                 ?>
                                             </select>
                                         </div>
@@ -194,6 +190,7 @@ if (isset($_POST['insert_pro'])) {    // when button is clicked
     $product_keywords = $_POST['product_keywords'];
     $product_delivery = $_POST['product_delivery'];
 
+    
     // getting image
     $product_image = $_FILES['product_image']['name'];
     $product_image_tmp = $_FILES['product_image']['tmp_name'];  // for server
@@ -202,10 +199,11 @@ if (isset($_POST['insert_pro'])) {    // when button is clicked
         move_uploaded_file($product_image_tmp, "../Admin/product_images/$product_image");
 
         $phone = $_SESSION['phonenumber'];
-        $getting_id = "select * from farmerregistration where farmer_phone = $sessphonenumber";
+        $getting_id = "select * from farmerregistration where farmer_phone = $phone";
         $run = mysqli_query($con, $getting_id);
         $row = mysqli_fetch_array($run);
         $id = $row['farmer_id'];
+        echo " --- $id ";
         $insert_product = "insert into products (farmer_fk,product_title, product_cat, 
                                 product_type,product_expiry,product_image, product_stock, product_price,
                                 product_desc,  product_keywords, product_delivery) 
@@ -214,7 +212,6 @@ if (isset($_POST['insert_pro'])) {    // when button is clicked
                                         '$product_keywords','$product_delivery')";
 
         $insert_query = mysqli_query($con, $insert_product);
-        echo $insert_product;
         if ($insert_query) {
             echo "<script>alert('Product has been added')</script>";
             echo "<script>window.open('farmerHomepage.php','_self')</script>";

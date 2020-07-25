@@ -1,4 +1,4 @@
- <?php
+<?php
 include("../Includes/db.php");
 session_start();
 $sessphonenumber = $_SESSION['phonenumber'];
@@ -138,7 +138,7 @@ while ($row = mysqli_fetch_array($run_query)) {
                 <input type="email" readonly class="form-control-plaintext border border-dark" id="staticEmail" value=" ">
             </div>  -->
         </div>
-        <button type="button" class="btn text-center d-flex mx-auto btn-lg" style="background-color:#292b2c;color:goldenrod">Edit Profile</button>
+        <button type="button" class="btn text-center d-flex mx-auto btn-lg" style="background-color:black;color:goldenrod;margin:10px";><a style="color:gold"; href="farmerHomepage.php">HomePage</a></button>
     </div>
 </body>
 </html>
