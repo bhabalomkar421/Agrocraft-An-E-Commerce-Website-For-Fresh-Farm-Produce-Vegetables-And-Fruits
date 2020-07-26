@@ -568,8 +568,42 @@ if (isset($_POST['submit'])) {
     }
     $clear = "delete from cart where phonenumber = $sess_phone_number";
     $run = mysqli_query($con, $clear);
-    if ($run) {
+
+    // sending mail of that order
+
+    //fetching logged in buyer mail
+    if (isset($_SESSION['phonenumber'])) {
+        $phonenumber = $_SESSION['phonenumber'];
+        global $con;
+
+        $query = "select * from buyerregistration where buyer_phone = $phonenumber";
+        $run_query = mysqli_query($con, $query);
+        if ($run_query) {
+            while ($row_cat = mysqli_fetch_array($run_query)) {
+                $buyer_mail = $row_cat['buyer_mail'];
+            }
+        }
+   } else {
+        echo "<script>window.open('bhome.php','_self')</script>";
+        $buyer_mail = 'intmain1221v2@gmail.com';
+   }
+   
+   //sending mail
+   $mail = $buyer_mail;    
+   $to_email = $mail;
+   $subject = "your order has been placed...!!!";
+   $body = "Hello.., Thanks for connecting with AgroCraft,\nHope you are enjoying our services!!!\nyour order has been placed and will shipped soon...\nproduct id :".$product_id."\ntotal price - ".$total."\nand delivery address - ".$address."\n\nfor further details contact us : 9999999999\n\n\n\t Agrocraft - \n...";
+   $headers = "From: intmain1221@gmail.com";
+   if (mail($to_email, $subject, $body, $headers)) {
+        // echo "Email successfully sent to $to_email...";
         echo "<script>window.open('Success.php','_self')</script>";
+    } else {
+        echo "Email sending failed...";
     }
+    // if ($run) {
+    //     echo "<script>window.open('Success.php','_self')</script>";
+    // }
+
 }
+
 ?>

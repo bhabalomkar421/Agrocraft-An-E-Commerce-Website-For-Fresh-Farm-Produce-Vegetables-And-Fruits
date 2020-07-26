@@ -441,10 +441,31 @@
   <?php 
      //sending email for order placed
      //store mail
-     $mail = 'intmain1221@gmail.com'       
-     $to_email = $mail;
-     $subject = "your order has been placed...!!!";
-     $body = "Hello.., Thanks for connecting with AgroCraft,\nHope you are enjoying our services!!!\nyour order has been placed and will shipped soon...\nAgrocraft - \n...";
-     $headers = "From: intmain1221@gmail.com";
+     // if (isset($_SESSION['phonenumber'])) {
+     //      $phonenumber = $_SESSION['phonenumber'];
+     //      global $con;
+
+     //      $query = "select * from buyerregistration where buyer_phone = $phonenumber";
+     //      $run_query = mysqli_query($con, $query);
+     //      if ($run_query) {
+     //          while ($row_cat = mysqli_fetch_array($run_query)) {
+     //              $buyer_mail = $row_cat['buyer_mail'];
+     //          }
+     //      }
+     // } else {
+     //      echo "<script>window.open('bhome.php','_self')</script>";
+     //      $buyer_mail = 'intmain1221v2@gmail.com';
+     // }
+     
+     // $mail = $buyer_mail;    
+     // $to_email = $mail;
+     // $subject = "your order has been placed...!!!";
+     // $body = "Hello.., Thanks for connecting with AgroCraft,\nHope you are enjoying our services!!!\nyour order has been placed and will shipped soon...\nAgrocraft - \n...";
+     // $headers = "From: intmain1221@gmail.com";
+     // if (mail($to_email, $subject, $body, $headers)) {
+     //      echo "Email successfully sent to $to_email...";
+     //  } else {
+     //      echo "Email sending failed...";
+     //  }
 
   ?>
