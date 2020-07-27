@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2020 at 08:55 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.8
+-- Generation Time: Jul 27, 2020 at 11:43 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -37,7 +37,7 @@ CREATE TABLE `buyerregistration` (
   `buyer_license` varchar(100) NOT NULL,
   `buyer_bank` int(16) NOT NULL,
   `buyer_pan` varchar(10) NOT NULL,
-  `buyer_mail` varchar(20) NOT NULL,
+  `buyer_mail` varchar(200) NOT NULL,
   `buyer_username` varchar(20) NOT NULL,
   `buyer_password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -47,12 +47,16 @@ CREATE TABLE `buyerregistration` (
 --
 
 INSERT INTO `buyerregistration` (`buyer_id`, `buyer_name`, `buyer_phone`, `buyer_addr`, `buyer_comp`, `buyer_license`, `buyer_bank`, `buyer_pan`, `buyer_mail`, `buyer_username`, `buyer_password`) VALUES
-(15, 'Abhishek', 1234567890, ' Raj Uday 234', 'Elysian.org', '02082000', 2147483647, '1234567890', 'abhi@hmil.com', 'admin', 'm8bf5+Y='),
-(16, 'Arpit', 7666610976, 'Bhat Mansion', 'Mafia Pvt Ltd', '99', 12345, '987', 'abcd@gmail.com', 'redhawk', 'm9HW6O8B'),
+(15, 'Abhishek', 1234567890, ' Raj Uday 234', 'Elysian.org', '02082000', 2147483647, '1234567890', 'abhig0209@gmail.com', 'admin', 'm8bf5+Y='),
+(16, 'Arpit', 7666610976, 'Bhat Mansion', 'Mafia Pvt Ltd', '99', 12345, '987', 'arpitbhat48@gmail.com', 'redhawk', 'm8bf5+Y='),
 (17, 'calista', 2589631472, '4/2,rose building .wadala', 'apple', 'w3566908', 8947, '2436467897', 'rose21@gmail.com', 'melissa', 'nM7d+e0b41E='),
 (18, 'Lokesh', 9029788504, 'SEC -13 , PALM BEACH ROAD', '', 'MAHARASHTRA', 0, '1234567890', 'abhi@hmil.com', 'lokesh', 'yw=='),
 (19, 'ansh', 9819104641, 'fam', 'Elysian.org', 'MAHARASHTRA', 2147483647, '1234567890', 'abhi@hmil.com', 'ansh', 'y5CB'),
-(20, 'bhabalomkar421', 8828071232, 'bj', 'c company', 'just **** off', 1, '1', 'xyz@domain.com', '501807', 'yw==');
+(20, 'bhabalomkar421', 8828071232, 'bj', 'c company', '12453', 1, '1', 'bhabalomkar421@gmail.com', '501807', 'm8bf5+Y='),
+(21, 'arpit bhatt', 7666610975, 'seawoods', 'FCRIT', 'xyz', 124, '999', 'arpitbhat48@gmail.com', 'arpitb', 'yw=='),
+(22, 'monish bhabal', 8369619158, 'navapada,Dombivli(e)', 'TJ pvt. ltd', 'xwq', 123, 'dsv', 'monish@gmailcom', 'monish bhabal', 'l83c5/sB'),
+(23, 'Abdul Azim', 9223152967, 'sector7-A, vashi, navi mumbai', 'Azims lmtd.', 'a12d', 124, '142DS2', 'abdulazim0402@gmail.com', 'Abdul Azim', 'm8bf5+Y='),
+(24, 'monish bhabal', 7715802258, 'navapada,dombivli(w)', 'gebbs', 'MIT', 1425, '525DDGD23', 'monishbhabal01@gmail.com', 'monish', 'm8bf5+Y=');
 
 -- --------------------------------------------------------
 
@@ -63,7 +67,7 @@ INSERT INTO `buyerregistration` (`buyer_id`, `buyer_name`, `buyer_phone`, `buyer
 CREATE TABLE `cart` (
   `product_id` int(255) NOT NULL,
   `phonenumber` bigint(10) NOT NULL,
-  `qty` int(10) NOT NULL DEFAULT 1,
+  `qty` int(10) NOT NULL DEFAULT '1',
   `subtotal` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -72,7 +76,9 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`product_id`, `phonenumber`, `qty`, `subtotal`) VALUES
-(32, 8169193101, 2, 10);
+(32, 8169193101, 2, 20),
+(31, 8369619158, 1, 25),
+(3, 9223152967, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -287,7 +293,31 @@ INSERT INTO `orders` (`order_id`, `product_id`, `qty`, `address`, `delivery`, `p
 (56, 28, 1, ' Raj Uday 234', 'Buyer', 8169193101, 45, 'cod', 1234567890),
 (57, 31, 1, 'I am Hungry', 'Buyer', 8169193101, 25, 'cod', 1234567890),
 (58, 3, 2, ' Raj Uday 234', 'Farmer', 8169193101, 10, 'paytm', 1234567890),
-(60, 32, 1, 'Working', 'Buyer', 8169193101, 10, 'cod', 1234567890);
+(60, 32, 1, 'Working', 'Buyer', 8169193101, 10, 'cod', 1234567890),
+(61, 30, 3, 'bj', 'Courier', 8169193101, 195, 'paytm', 8828071232),
+(62, 23, 1, 'bj', 'Courier', 8169193101, 56, 'paytm', 8828071232),
+(63, 32, 1, 'bj', 'Courier', 8169193101, 10, 'paytm', 8828071232),
+(64, 19, 3, 'bDombivli', 'Courier', 8169193101, 168, 'paytm', 8828071232),
+(65, 29, 1, 'bDombivli', 'Courier', 8169193102, 50, 'paytm', 8828071232),
+(66, 24, 1, 'bDombivli', 'Courier', 8169193101, 101, 'paytm', 8828071232),
+(67, 25, 1, 'navapada,dombivli(w)', 'Farmer', 8169193101, 80, 'paytm', 7715802258),
+(68, 21, 1, 'bj', 'Farmer', 8169193101, 99, 'paytm', 8828071232),
+(69, 22, 1, 'navapada,dombivli(w)', 'Courier', 8169193102, 12, 'paytm', 7715802258),
+(70, 22, 2, 'navapada,dombivli(w)', 'Courier', 8169193102, 24, 'paytm', 7715802258),
+(71, 18, 3, 'navapada,dombivli(w)', 'Courier', 8169193102, 6, 'paytm', 7715802258),
+(72, 31, 1, 'navapada,dombivli(w)', 'Courier', 8169193101, 25, 'paytm', 7715802258),
+(73, 23, 1, 'bj', 'Farmer', 8169193101, 56, 'paytm', 8828071232),
+(74, 37, 1, 'bj', 'Courier', 8169193101, 50, 'paytm', 8828071232),
+(75, 17, 1, 'bj', 'Courier', 8169193102, 30, 'paytm', 8828071232),
+(76, 29, 1, 'bj', 'Courier', 8169193102, 50, 'paytm', 8828071232),
+(77, 18, 1, 'koparkairane', 'Buyer', 8169193102, 2, 'paytm', 8828071232),
+(78, 24, 1, 'bj', 'Farmer', 8169193101, 101, 'paytm', 8828071232),
+(79, 29, 1, 'navapada', 'Courier', 8169193102, 50, 'paytm', 8828071232),
+(80, 25, 1, ' I live in between Seawoods,Nerul & Juhinagar.sometimes Belapur', 'Farmer', 8169193101, 80, 'paytm', 7666610976),
+(81, 38, 1, ' I live in between Seawoods,Nerul & Juhinagar.sometimes Belapur', 'Farmer', 8828071232, 30, 'paytm', 7666610976),
+(82, 1, 3, ' I live in between Seawoods,Nerul & Juhinagar.sometimes Belapur', 'Courier', 8169193101, 36, 'paytm', 7666610976),
+(83, 19, 5, ' I live in between Seawoods,Nerul & Juhinagar.sometimes Belapur', 'Courier', 8169193101, 280, 'paytm', 7666610976),
+(84, 18, 1, 'bj', 'Courier', 8169193102, 2, 'paytm', 8828071232);
 
 -- --------------------------------------------------------
 
@@ -303,8 +333,8 @@ CREATE TABLE `products` (
   `product_type` varchar(100) NOT NULL,
   `product_expiry` varchar(25) NOT NULL,
   `product_image` text NOT NULL,
-  `product_stock` int(100) NOT NULL,
-  `product_price` int(100) NOT NULL,
+  `product_stock` int(250) NOT NULL,
+  `product_price` int(255) NOT NULL,
   `product_desc` text NOT NULL,
   `product_keywords` text NOT NULL,
   `product_delivery` varchar(5) NOT NULL
@@ -331,7 +361,56 @@ INSERT INTO `products` (`product_id`, `farmer_fk`, `product_title`, `product_cat
 (30, 1, 'Ansh Onion', '2', 'Onion', '2020-04-15', 'Onion.jpg', 1500, 65, 'Grown with love', 'Onion,best onion', 'no'),
 (31, 1, 'Abhi Strawberry', '3', 'Strawberry', '2020-04-15', 'strawberry.jpg', 100, 25, 'Best Strawberrys all over India ', 'Strawberry,best strawberry', 'yes'),
 (32, 1, 'Abhi Orange', '3', 'Orange', '2020-04-15', 'orange.jpg', 1500, 10, 'Best Oranges grown with love in Nagpur', 'Orange,best Orange', 'yes'),
-(37, 1, 'Ram Sugacane', '1', 'Sugarcane', '2020-04-25', 'Sugarcane.jpg', 1000, 50, 'Best Sugarcane', 'Sugarcane', 'yes');
+(37, 1, 'Ram Sugacane', '1', 'Sugarcane', '2020-04-25', 'Sugarcane.jpg', 1000, 50, 'Best Sugarcane', 'Sugarcane', 'yes'),
+(38, 92, 'azim pineapple', '3', 'pineapple', '2020-12-31', 'pineapple.jpg', 50, 30, 'best quality pineapple ', 'best pineapple', 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ratings`
+--
+
+CREATE TABLE `ratings` (
+  `product_id` int(255) NOT NULL,
+  `phone_number` bigint(10) NOT NULL,
+  `ratings` float NOT NULL,
+  `reviews` varchar(1000) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ratings`
+--
+
+INSERT INTO `ratings` (`product_id`, `phone_number`, `ratings`, `reviews`, `date`) VALUES
+(30, 8828071232, 5, 'nice product', '0000-00-00'),
+(30, 8828071232, 1, 'gh', '0000-00-00'),
+(30, 8828071232, 5, 'nice product', '2020-07-27'),
+(24, 8828071232, 5, 'awesome product', '2020-07-27'),
+(19, 8828071232, 2, 'satisfactory product', '2020-07-27'),
+(23, 8828071232, 6, 'bf', '2020-07-27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `saveforlater`
+--
+
+CREATE TABLE `saveforlater` (
+  `product_id` int(255) NOT NULL,
+  `phonenumber` bigint(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `saveforlater`
+--
+
+INSERT INTO `saveforlater` (`product_id`, `phonenumber`) VALUES
+(18, 8369619158),
+(31, 8369619158),
+(30, 8369619158),
+(3, 9223152967),
+(23, 9223152967);
 
 -- --------------------------------------------------------
 
@@ -466,7 +545,7 @@ ALTER TABLE `slot`
 -- AUTO_INCREMENT for table `buyerregistration`
 --
 ALTER TABLE `buyerregistration`
-  MODIFY `buyer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `buyer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -496,13 +575,13 @@ ALTER TABLE `farmerregistration`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `order_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `shopkeeper`

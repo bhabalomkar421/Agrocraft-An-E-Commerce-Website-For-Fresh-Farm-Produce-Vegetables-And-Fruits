@@ -544,12 +544,20 @@ include("../Functions/functions.php");
                     </div>
 
                     <br><br>
-                    <div class='  description mt-0'><b>
+                    <div class='  description mt-0'>
+                        <b>
                             <h2 class='text-center font-weight-bold'>Description</h2>
-                        </b></div>
+                        </b>
+                    </div>
                     <br>
                     <div class='texty' style='margin-top:0%; font-size:25px;'> $product_desc.</div>
-
+                    <div class='  description mt-0'>
+                        <b>
+                            <h2 class='text-center font-weight-bold'>Reviews</h2>
+                        </b>
+                    </div>
+                    <br>
+                    <div class='texty' style='margin-top:0%; font-size:25px;'>..reviews .</div>
                     
                 </div>";
             }
