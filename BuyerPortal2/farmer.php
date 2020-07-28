@@ -333,7 +333,8 @@ include("../Functions/functions.php");
                                         </p>
                                     </div>
                                 </div>
-                            </div>";
+                            </div>
+                            ";
                     }
                 }
             }else{
