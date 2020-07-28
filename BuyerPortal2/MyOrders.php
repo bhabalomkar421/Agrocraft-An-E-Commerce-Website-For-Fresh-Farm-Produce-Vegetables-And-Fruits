@@ -399,15 +399,80 @@ include("../Functions/functions.php");
         <?php 
             $query = "select * from subscription where"
         ?>
+        <hr>
         <div class="text-left">
             <h3 class="mt-2">Your Subscriptions </h3>
             <hr style="margin-top:-0.5%">
         </div>
         <br>
+        <table class="table">
+            <thead>
+                <th>Product id</th>
+                <th>product Title</th>
+                <th>Farmer Name</th>
+                <th>Starting Date</th>
+                <th>End Date</th>   
+                <th>Rate Us</th>    
+            </thead>
+
+            <tbody>
+                <?php
+
+                global $con;
+                if (isset($_SESSION['phonenumber'])) {
+                    $sess_phone_number = $_SESSION['phonenumber'];
+                    $sel_price = "select * from subscription where phone_number = '$sess_phone_number'";
+                    $run_price = mysqli_query($con, $sel_price);
+                    $i = 0;
+
+                    while ($p_price = mysqli_fetch_array($run_price)) {
+                        $product_id = $p_price['product_id'];
+                        $start_date = $p_price['start_date'];
+                        $end_date = $p_price['end_date'];
+                        
+                        $pro_price = "select product_title,farmer_fk from products where product_id='$product_id'";
+                        $run_pro_price = mysqli_query($con, $pro_price);
+                        while ($pp_price = mysqli_fetch_array($run_pro_price)) {
+                            $product_title = $pp_price['product_title'];
+                            $farmer_id = $pp_price['farmer_fk'];
+
+                            $query_name = "select * from farmerregistration where farmer_id = $farmer_id";
+                            $run_query_name = mysqli_query($con, $query_name);
+                            while ($names = mysqli_fetch_array($run_query_name)) {
+                                $farmer_name = $names['farmer_name'];
+                ?>
+                                <tr>
+                                    <td data-label="Product id"><?php echo $product_id; ?> </td>
+                                    <td data-label="Product Title"><?php echo $product_title; ?> </td>
+                                    <td data-label="Farmer name"><?php echo $farmer_name; ?> </td>
+                                    <td data-label="Start Date"><?php echo $start_date; ?> </td>
+                                    <td data-label="End Date"><?php echo $end_date; ?> </td>
+                                    <td data-label="Rate us">
+                                        <?php echo "
+                                            <a href='./ratings.php?id=$product_id'>
+                                                <button name='cart' class='btn btn-warning border-secondary addtocart' style='color:black'>
+                                                    <b>Rate us</b>
+                                                </button> 
+                                            </a>";
+                                            ?>
+                                        </td>
+                                </tr>
+            </tbody>
+            <?php
+                            }
+                        }
+                        $i++;
+                    }
+                } else {
+                    echo "<h1 align = center>Please Login First!</h1><br><br><hr>";
+                } 
+            ?>
+        </table>
         <br>
         <a href="bhome.php">
             <button type="button" class="btn  btn-lg border border-dark" style="background-color:#FFD700;color:black;">Continue Shopping
-                <i class="fas fa-shopping-bag ml-2" aria-hidden="true"></i></button>
+                <i class="fas fa-shopping-bag ml-2" aria-hidden="true"></i>
+            </button>
         </a>
     </div>
 

@@ -838,20 +838,6 @@ include("../Functions/functions.php");
                     $product_delivery = $rows['product_delivery'];
                     $product_cat = $rows['product_cat'];
 
-                    // echo "<div class='row'>
-                    //         <div class='col col-md-6'>
-                    //             <img src='../Admin/product_images/$product_image' class='rounded mx-auto d-block bord' style='float:left;' height='250px' width='300px' >
-                    //             <h4>$product_type</h4>
-                    //         </div>
-                    //         <div class='col col-md-6'><br>
-                    //           <h3 style='font-weight:bold;'>" . $product_title."</h3><br>"  
-                    //             . " product type  :  " . $product_type."<br>" 
-                    //             . " product stock  :  " . $product_stock."<br>"
-                    //             . " product Description  :  " . $product_description."<br>" 
-                    //             . " product price  :  " . $product_price."<br>" 
-                    //             . " product Delivery  :  " . $product_delivery."<br>"
-                    //             . " product category  :  " . $product_cat ."<br>".
-                    //         "</div> </div>";
                     if ($product_stock == 0) {
                          $str = "Not In Stock";
                     } else {
@@ -902,7 +888,7 @@ include("../Functions/functions.php");
 
                                              <div class='row' style='padding:7px; margin-bottom:15px;' >
                                                   <div class='col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 aligncenter'> <a href='EditProduct.php?id=$prod_id' class='btn btn-warning border-secondary' style='color:black'><b>Edit Product</b></a></div>
-                                                  <div class='col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 aligncenter'> <a class='btn btn-warning border-secondary' value = 'delete' style='color:black'><b>Delete</b></a></div>
+                                                  <div class='col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 aligncenter'> <a href='DeleteProduct.php?id=$prod_id' class='btn btn-warning border-secondary' value = 'delete' style='color:black'><b>Delete</b></a></div>
                                              </div>
                                         </div>         
                                    </div>

@@ -6,6 +6,6 @@ if (isset($_GET['id'])) {
      $delete_product = "delete from cart where product_id = '$product_id' and phonenumber = '$sess_phone_number'";
      $run_delete = mysqli_query($con, $delete_product);
 
-     echo "<script>window.open('saveforlater.php','_self')</script>";
+     echo "<script>window.open('CartPage.php','_self')</script>";
 }
 ?>
