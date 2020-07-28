@@ -7,7 +7,7 @@ include("../Functions/functions.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Save for later</title>
+    <title>Subscription</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -285,32 +285,99 @@ include("../Functions/functions.php");
 
     <div class="text-success  login">Login</div>
 </div>
-
 </nav>
-    <div class="container">
-
-        <div class="text-left ">
-            <h2>Save For later
+    <form action = '' method=POST>
+        <div class="container">
+            <div class="text-left ">
+                <h2>
+                    Subscription
+                </h2>
                 <a href="emptySaveLater.php">
-                    <div class="text-right"><button type="button" class="btn btn-warning border border-dark " style="margin-top:-5%"><b>Delete all</b></button></div>
+                    <div class="text-right"></div>
                 </a>
-            </h2>
-            <hr style="margin-top:-2%">
+                <hr>
+            </div>
 
+            <!-- start date and end date for subscription -->
+
+            <div class="form-group row">
+                <label for="start_date" class="col-md-4 col-form-label text-md-right text-center font-weight-bolder">From :</label>
+                <div class="col-md-6">
+                    <input id="start_date" class="form-control" type="date" name="start_date" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="end_date" class="col-md-4 col-form-label text-md-right text-center font-weight-bolder">To :</label>
+                <div class="col-md-6">
+                    <input id="end_date" class="form-control" type="date" name="end_date" required>
+                </div>
+            </div>
+
+            <!-- Day -->
+            <div class="container my-4">
+                <hr>
+                <p class="font-weight-bold">Select Days : </p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="check1" checked>
+                        <label class="custom-control-label" for="check1">Sunday</label>
+                    </div>
+                    </li>
+                    <li class="list-group-item">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="check2">
+                        <label class="custom-control-label" for="check2">Monday</label>
+                    </div>
+                    </li>
+                    <li class="list-group-item">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="check3">
+                        <label class="custom-control-label" for="check3">Tuesday</label>
+                    </div>
+                    </li>
+                    <li class="list-group-item">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="check4">
+                        <label class="custom-control-label" for="check4">Wednesday</label>
+                    </div>
+                    </li>
+                    <li class="list-group-item">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="check5">
+                        <label class="custom-control-label" for="check5">Thrusday</label>
+                    </div>
+                    </li>
+                    <li class="list-group-item">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="check6">
+                        <label class="custom-control-label" for="check6">Friday</label>
+                    </div>
+                    </li>
+                    <li class="list-group-item">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="check7">
+                        <label class="custom-control-label" for="check7">Saturday</label>
+                    </div>
+                    </li>
+                </ul>
+            </div>
+            <label for="appt">Select a time:</label>
+            <input type="time" id="time_id" name="time">
+            <input type="submit" name="submit">
         </div>
-    </div>
+    </form>
 
 
-    <div class="container">
-        <div class="row">
-            <?php 
-                getSaveForLater();
-            ?>
-        </div>
-    </div>
+    <?php 
+        if(isset($_GET['id'])){
+            $product_id = $_GET['id'];
+            if()        
 
-    </div>
-
+        }else{
+            echo "<h3>Select the product</h3>";
+        }
+    ?>
 
 
 
