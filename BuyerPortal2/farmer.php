@@ -312,14 +312,14 @@ include("../Functions/functions.php");
         <div class="row">
             <?php 
             if(isset($_SESSION['phonenumber'])){
-                $query = "select * from farmerregistration";
+                $farmer_id = $_GET['id'];
+                $query = "select * from farmerregistration where farmer_id = $farmer_id";
                 $run_query = mysqli_query($con, $query);
                 if ($run_query) {
                     while ($rows = mysqli_fetch_array($run_query)) {
                         $farmer_name = $rows['farmer_name'];
                         $farmer_district = $rows['farmer_district'];
                         $farmer_state = $rows['farmer_state'];
-                        $farmer_id = $rows['farmer_id'];
                         echo "
                             <div class='col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 '>
                                 <div class='card border-dark border' >
