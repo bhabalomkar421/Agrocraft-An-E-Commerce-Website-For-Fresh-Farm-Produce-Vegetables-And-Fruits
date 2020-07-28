@@ -512,6 +512,7 @@ include("../Functions/functions.php");
                                         </div>
                                         </div>
                                 </form>
+
                                 <form actions='' method='post'>
                                     <div class='col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12'> 
                                         <a href='./ProductDetails.php?save_for_later=$product_id' class='btn btn-warning border-secondary saveforlater' style='color:black'>
@@ -519,8 +520,17 @@ include("../Functions/functions.php");
                                             <img src='saveforlater4.png' class='ml-1 mb-1'>
                                         </a>
                                     </div>
-                                    
                                 </form>
+
+                                <form actions='' method='post'>
+                                    <div class='col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12'> 
+                                        <a href='./Subscription.php?id=$product_id' class='btn btn-warning border-secondary' style='color:black'>
+                                            <b>Subscribe</b>
+                                            <img src='saveforlater4.png' class='ml-1 mb-1'>
+                                        </a>
+                                    </div>
+                                </form>
+                                
                                 <div class='row text-center ml-4 mt-3'>
                                     <i class='fa fa-truck fa-2x'></i>
                                     <h3 style='padding-left:9px;'>$product_delivery</h3>
