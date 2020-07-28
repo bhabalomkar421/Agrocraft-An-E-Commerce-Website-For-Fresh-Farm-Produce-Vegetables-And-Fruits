@@ -385,16 +385,26 @@ include("../Functions/functions.php");
                                         </td>
                                 </tr>
             </tbody>
-<?php
+            <?php
                             }
                         }
                         $i++;
                     }
                 } else {
                     echo "<h1 align = center>Please Login First!</h1><br><br><hr>";
-                } ?>
+                } 
+            ?>
         </table>
-        <br><br>
+        <br>
+        <?php 
+            $query = "select * from subscription where"
+        ?>
+        <div class="text-left">
+            <h3 class="mt-2">Your Subscriptions </h3>
+            <hr style="margin-top:-0.5%">
+        </div>
+        <br>
+        <br>
         <a href="bhome.php">
             <button type="button" class="btn  btn-lg border border-dark" style="background-color:#FFD700;color:black;">Continue Shopping
                 <i class="fas fa-shopping-bag ml-2" aria-hidden="true"></i></button>

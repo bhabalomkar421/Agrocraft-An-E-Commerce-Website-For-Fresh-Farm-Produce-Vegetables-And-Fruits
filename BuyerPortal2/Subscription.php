@@ -286,7 +286,7 @@ include("../Functions/functions.php");
     <div class="text-success  login">Login</div>
 </div>
 </nav>
-    <form action = '' method=POST>
+    <form action = "Subscription.php?id=$product_id" method=POST>
         <div class="container">
             <div class="text-left ">
                 <h2>
@@ -320,43 +320,43 @@ include("../Functions/functions.php");
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check1" checked>
+                        <input type='checkbox' class="custom-control-input" id="check1" name='checkboxName[]' value='sunday'>
                         <label class="custom-control-label" for="check1">Sunday</label>
                     </div>
                     </li>
                     <li class="list-group-item">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check2">
+                        <input type='checkbox' class="custom-control-input" id="check2" name='checkboxName[]' value='monday'>
                         <label class="custom-control-label" for="check2">Monday</label>
                     </div>
                     </li>
                     <li class="list-group-item">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check3">
+                        <input type="checkbox" class="custom-control-input" id="check3" name='checkboxName[]' value='tuesday'>
                         <label class="custom-control-label" for="check3">Tuesday</label>
                     </div>
                     </li>
                     <li class="list-group-item">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check4">
+                        <input type="checkbox" class="custom-control-input" id="check4" name='checkboxName[]' value='wednesday'>
                         <label class="custom-control-label" for="check4">Wednesday</label>
                     </div>
                     </li>
                     <li class="list-group-item">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
+                        <input type="checkbox" class="custom-control-input" id="check5" name='checkboxName[]' value='thrusday'>
                         <label class="custom-control-label" for="check5">Thrusday</label>
                     </div>
                     </li>
                     <li class="list-group-item">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check6">
+                        <input type="checkbox" class="custom-control-input" id="check6" name='checkboxName[]' value='friday'>
                         <label class="custom-control-label" for="check6">Friday</label>
                     </div>
                     </li>
                     <li class="list-group-item">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check7">
+                        <input type="checkbox" class="custom-control-input" id="check7" name='checkboxName[]' value='saturday'>
                         <label class="custom-control-label" for="check7">Saturday</label>
                     </div>
                     </li>
@@ -364,19 +364,38 @@ include("../Functions/functions.php");
             </div>
             <label for="appt">Select a time:</label>
             <input type="time" id="time_id" name="time">
-            <input type="submit" name="submit">
+            <br><br>
+            <?php      
+                $product_id = $_GET['id'];
+                echo "<input style='text-color:white;color:white;' type = 'hidden' name = 'product_id' value=$product_id readonly><br><br>"
+                ?>
+
+            <input class="btn btn-primary" type="submit" name="submit">
+
         </div>
     </form>
 
-
-    <?php 
-        if(isset($_GET['id'])){
-            $product_id = $_GET['id'];
-            if()        
-
-        }else{
-            echo "<h3>Select the product</h3>";
+    <?php      
+        $var = '';
+        if(isset($_POST['submit'])){ 
+            $start_date = $_POST['start_date'];
+            $end_date = $_POST['end_date'];
+            $time = $_POST['time'];
+            $pro_id = $_POST['product_id'];
+            $phone_number = $_SESSION['phonenumber'];
+            foreach($_POST['checkboxName'] as $value) {
+            $var = $var.$value.",";
+            }
+            echo $product_id;
+            $query = "insert into subscription(product_id,phone_number,start_date,end_date,days,time) values('$pro_id','$phone_number','$start_date','$end_date','$var','$time')";
+            $run_query = mysqli_query($con, $query);
+            if ($run_query) {
+                echo "<script>window.open('bhome.php','_self')</script>";
+            } else {
+                echo "<script>alert('Error Uploading Data Please Check your Connections ')</script>";
+            }
         }
+
     ?>
 
 
