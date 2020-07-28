@@ -1,6 +1,9 @@
 <?php
 include("../Functions/functions.php");
+
+include("../Includes/db.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,14 +11,18 @@ include("../Functions/functions.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <a href="https://icons8.com/icon/83325/roman-soldier"></a>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- <script src="jquery-3.5.1.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <script src="https://kit.fontawesome.com/c587fc1763.js" crossorigin="anonymous"></script>
 </head>
 <style>
@@ -275,36 +282,94 @@ include("../Functions/functions.php");
             </div>
         </div>    
     </nav>
+    
+<?php
+  $product_id = $_GET['id'];
+       echo"<form action='ratings.php?id=$product_id' method='post'>
+     
+       <br><br>
+       <div class='container'>
+<div class='card'>
+  <div class='card-header' style=background-color:#292b2c;color:goldenrod>
+  <h3 class='text-center' >  Express your thoughts here !</h3>
+  </div>
+  <div class='card-body text-center'>
 
-    <?php 
+    <div class='text-center'>  
+    
+   <h6> Do Give Your Honest Reviews & Ratings</h6>
+    <h3> <span class='result'>  0</span></h3>
+   <input type='hidden' name='rating'>
+    
+    <div class='rateyo text-center' id='rating'
+    style='display:inline-block!important'
+    data-rateyo-rating='4'
+    data-rateyo-num-stars='5'
+    data-rateyo-score='3'
+    >
+
+    </div> 
+    <br>
+  
+
+<br>
+<div class='text-center'>
+    <div class='input-group' style=width:50%;margin-left:25%;margin-right:25%;>
+  <div class='input-group-prepend'>
+    <span class='input-group-text'  style=background-color:#292b2c;color:goldenrod>Reviews</span>
+  </div>
+  <textarea class='form-control' name='name' aria-label='With textarea'></textarea>
+</div>
+</div>
+  
+<div >
+<br><br>
+<button type='submit'name='add' class='btn 'style=background-color:#292b2c;color:goldenrod> Submit </button>
+</div>
+</form>
+</div></div></div>"
+
+
+?>
+<script>
+$(function(){
+  $(".rateyo").rateYo().on("rateyo.change",function(e,data){
+    var rating=data.rating;
+    $(this).parent().find('.score').text('score:'+$(this).attr('data-rateyo-score'));
+    $(this).parent().find('.result').text(rating);
+    $(this).parent().find('input[name=rating]').val(rating);
+
+  });
+});
+
+
+</script>
+<?php 
+      
+
     $product_id = $_GET['id'];
     if(isset($_SESSION['phonenumber'])){
+    
         $phone_number =  $_SESSION['phonenumber'];
-        echo "<div>
-                <form action='ratings.php?id=$product_id' method=POST>
-                    <input type = 'number' name = 'rating' paceholder='ratings' required>
-                    <input type = 'text' name = 'reviews' placeholder='your reviews' required>
-                    <input type = 'submit' name = 'submit'>
-                </form>
-                </div>";
-    }
+      
+  
+    
+if(isset($_POST['name']))
+{  $product_id = $_GET['id'];
+$reviews=$_POST["name"];
+$rating=$_POST["rating"];
+$date = date("Y-m-d");
+$sql="insert into ratings(product_id, phone_number,ratings,  reviews, date) values('$product_id', '$phone_number','$rating',  '$reviews', CURDATE())";
 
-    if(isset($_POST['submit'])){
-        $ratings = $_POST['rating'];
-        $reviews = $_POST['reviews'];
-        $date = date("Y-m-d");
-        echo "$ratings --- $reviews --- $date";
+if(mysqli_query($con,$sql)){
 
-        //product_id, buyer_phone_number, rating, review, date
-        $query = "insert into ratings(product_id, phone_number, ratings, reviews, date) values('$product_id', '$phone_number', '$ratings', '$reviews', CURDATE())";
-        $run_register_query = mysqli_query($con, $query);
-        echo "<script>window.open('MyOrders.php','_self')</script>";
+}  }
+}
 
-    }
-    ?>                   
+ ?>
 
-
-
+ 
+<br><br>
     <section id="footer" class="myfooter">
         <div class="container" >
             <div class="row text-center text-xs-center text-sm-left text-md-left">
