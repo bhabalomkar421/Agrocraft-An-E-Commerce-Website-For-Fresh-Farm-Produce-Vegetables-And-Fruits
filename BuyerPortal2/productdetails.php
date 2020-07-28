@@ -424,6 +424,15 @@ include("../Functions/functions.php");
         $product_id  = $_GET['id'];
         $query = "select * from products where product_id = $product_id";
         $run_query = mysqli_query($con, $query);
+        $reviews_query = "select * from ratings where product_id = $product_id";
+        $run_query2 = mysqli_query($con, $reviews_query);
+        $average_rating = "SELECT avg(ratings) as avg_rating FROM ratings where product_id = $product_id";
+
+        $run_avg_query = mysqli_query($con, $average_rating);
+        while($rows = mysqli_fetch_array($run_avg_query)){
+            $avg_rating_final = $rows['avg_rating'];
+        }
+
         echo "<br>";
         while ($rows = mysqli_fetch_array($run_query)) {
             $farmer_fk = $rows['farmer_fk'];
@@ -439,8 +448,11 @@ include("../Functions/functions.php");
             } else {
                 $product_delivery = "Delivery by Farmer Not Available";
             }
+
             $querya = "select * from farmerregistration where farmer_id = $farmer_fk";
             $runa_query = mysqli_query($con, $querya);
+
+            
 
             while ($rows = mysqli_fetch_array($runa_query)) {
                 $name = $rows['farmer_name'];
@@ -448,7 +460,6 @@ include("../Functions/functions.php");
                 $address = $rows['farmer_address'];
                 $state = $rows['farmer_state'];
                 $district = $rows['farmer_district'];
-                
 
                 echo "
                 <div class='container'>
@@ -548,23 +559,66 @@ include("../Functions/functions.php");
                     <br><br>
                     <div class='  description mt-0'>
                         <b>
-                            <h2 class='text-center font-weight-bold'>Description</h2>
+                            <h2 class='font-weight-bold'>Description</h2>
                         </b>
                     </div>
                     <br>
                     <div class='texty' style='margin-top:0%; font-size:25px;'> $product_desc.</div>
-                    <div class='  description mt-0'>
-                        <b>
-                            <h2 class='text-center font-weight-bold'>Reviews</h2>
-                        </b>
-                    </div>
-                    <br>
-                    <div class='texty' style='margin-top:0%; font-size:25px;'>..reviews .</div>
+                    <br><br>
+                    
+                    <div class='texty' style='margin-top:0%; font-size:25px;'></div>
                     
                 </div>";
             }
         }
-    }
+        echo "
+            <div class='container  description mt-0'>
+                <b>
+                    <h2 class=' font-weight-bold'>Reviews</h2>
+                </b>
+            </div>";
+        echo "
+            <div class='container'>
+                <br>";
+        if($avg_rating_final){
+            echo "
+                <h4 class='font-weight-bold' style = 'margin-left: 35px;'>Average ratings - $avg_rating_final</h4>
+                <br>      
+            ";
+        }
+        echo "</div>";
+        echo "<div class='container'>";
+        while($rows = mysqli_fetch_array($run_query2)){
+            $phone_number = $rows['phone_number'];
+            $ratings = $rows['ratings'];
+            $reviews = $rows['reviews'];
+            $date = $rows['date'];
+            $find_reviewer = "select buyer_name from buyerregistration where buyer_phone='$phone_number'";
+            $run_query_to_find_reviewer = mysqli_query($con, $find_reviewer);
+            while($rows = mysqli_fetch_array($run_query_to_find_reviewer)){
+                $user = $rows['buyer_name'];
+            }
+            echo "<div style='border:1px solid black;margin: 15px;padding-top:10px;padding-left:10px;'>
+                    <h5>$user<h5>
+                ";
+            if($reviews){
+                echo "<div style='margin-left:50px;'>";
+                for($i = 1 ;$i <= $ratings;$i++){
+                    echo "
+                        <img src='star1.png'>
+                    ";
+                }
+                
+                echo "<b>$ratings <b>";
+                echo "</div>";
+                echo "
+                    <h5 class='' style = 'margin-left: 35px;'><br> $reviews</h5> 
+                    <h6 style=''> $date </h6>  
+                    </div>";
+                }
+            }
+        }
+        echo "</div>";
 
     if (isset($_POST['cart'])) {
         if (isset($_POST['quantity'])) {

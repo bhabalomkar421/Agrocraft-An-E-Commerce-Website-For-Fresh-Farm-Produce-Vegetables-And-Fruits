@@ -119,6 +119,7 @@ include("../Functions/functions.php");
 
         }
     </script>
+    <script async>(function(w, d) { w.CollectId = "5f1eb7f603f2d714cb700998"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script>
     <style>
         .myfooter {
             background-color: #292b2c;

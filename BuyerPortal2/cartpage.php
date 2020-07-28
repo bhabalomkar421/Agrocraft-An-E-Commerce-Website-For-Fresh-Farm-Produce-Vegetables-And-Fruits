@@ -21,6 +21,7 @@ include("../Functions/functions.php");
 
     <script src="https://kit.fontawesome.com/c587fc1763.js" crossorigin="anonymous"></script>
 </head>
+
 <style>
     .myfooter {
         background-color: #292b2c;
