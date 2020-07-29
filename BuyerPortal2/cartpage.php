@@ -332,7 +332,6 @@ include("../Functions/functions.php");
                     if (isset($_SESSION['phonenumber'])) {
                         echo "<a href='BuyerProfile2.php' class='dropdown-item  ' style='padding-right:-20px;'>Profile</a>";
                         echo "<a href='Transaction.php' class='dropdown-item ' style='padding-right:-20px;'>Transactions</a>";
-                        echo "<a href='#' class='dropdown-item'  style='padding-right:-20px;'>Subscriptions</a>";
                         echo "<a href='saveforlater.php' class='dropdown-item' style='padding-right:-20px;'>Save For Later</a>";
                         echo "<a href='MyOrders.php' class='dropdown-item ' style='padding-right:-20px;'>My Orders</a>";
                         echo "<a href='farmers.php' class='dropdown-item' style='padding-right:-20px;' >Farmers</a>";
