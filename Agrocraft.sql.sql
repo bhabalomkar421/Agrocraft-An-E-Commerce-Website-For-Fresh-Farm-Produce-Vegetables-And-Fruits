@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2020 at 11:43 AM
+-- Generation Time: Jul 29, 2020 at 10:00 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -56,7 +56,8 @@ INSERT INTO `buyerregistration` (`buyer_id`, `buyer_name`, `buyer_phone`, `buyer
 (21, 'arpit bhatt', 7666610975, 'seawoods', 'FCRIT', 'xyz', 124, '999', 'arpitbhat48@gmail.com', 'arpitb', 'yw=='),
 (22, 'monish bhabal', 8369619158, 'navapada,Dombivli(e)', 'TJ pvt. ltd', 'xwq', 123, 'dsv', 'monish@gmailcom', 'monish bhabal', 'l83c5/sB'),
 (23, 'Abdul Azim', 9223152967, 'sector7-A, vashi, navi mumbai', 'Azims lmtd.', 'a12d', 124, '142DS2', 'abdulazim0402@gmail.com', 'Abdul Azim', 'm8bf5+Y='),
-(24, 'monish bhabal', 7715802258, 'navapada,dombivli(w)', 'gebbs', 'MIT', 1425, '525DDGD23', 'monishbhabal01@gmail.com', 'monish', 'm8bf5+Y=');
+(24, 'monish bhabal', 7715802258, 'navapada,dombivli(w)', 'gebbs', 'MIT', 1425, '525DDGD23', 'monishbhabal01@gmail.com', 'monish', 'm8bf5+Y='),
+(25, 'ajay mishra', 7715802259, 'goa', 'xyz ltd.', '12343', 123, 'D12SA', 'ajaymishra@gmail.com', 'ajay', 'm8jT9w==');
 
 -- --------------------------------------------------------
 
@@ -77,8 +78,10 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`product_id`, `phonenumber`, `qty`, `subtotal`) VALUES
 (32, 8169193101, 2, 20),
-(31, 8369619158, 1, 25),
-(3, 9223152967, 1, 5);
+(31, 8369619158, 3, 75),
+(3, 9223152967, 1, 5),
+(1, 7715802259, 3, 36),
+(29, 7715802259, 1, 50);
 
 -- --------------------------------------------------------
 
@@ -317,7 +320,17 @@ INSERT INTO `orders` (`order_id`, `product_id`, `qty`, `address`, `delivery`, `p
 (81, 38, 1, ' I live in between Seawoods,Nerul & Juhinagar.sometimes Belapur', 'Farmer', 8828071232, 30, 'paytm', 7666610976),
 (82, 1, 3, ' I live in between Seawoods,Nerul & Juhinagar.sometimes Belapur', 'Courier', 8169193101, 36, 'paytm', 7666610976),
 (83, 19, 5, ' I live in between Seawoods,Nerul & Juhinagar.sometimes Belapur', 'Courier', 8169193101, 280, 'paytm', 7666610976),
-(84, 18, 1, 'bj', 'Courier', 8169193102, 2, 'paytm', 8828071232);
+(84, 18, 1, 'bj', 'Courier', 8169193102, 2, 'paytm', 8828071232),
+(85, 30, 4, 'Bhat Mansion', 'Courier', 8169193101, 260, 'paytm', 7666610976),
+(86, 30, 2, ' Raj Uday 234', 'Farmer', 8169193101, 130, 'paytm', 1234567890),
+(87, 17, 1, 'Between nerul,seawood,juinagar', 'Courier', 8169193102, 30, 'paytm', 7666610976),
+(88, 19, 1, 'b', 'Farmer', 8169193101, 56, 'paytm', 8828071232),
+(89, 18, 1, 'b', 'Farmer', 8169193102, 2, 'paytm', 8828071232),
+(90, 29, 2, 'navapada', 'Courier', 8169193102, 100, 'paytm', 8828071232),
+(91, 1, 3, 'goa', 'Courier', 8169193101, 36, 'paytm', 8828071232),
+(92, 31, 3, 'goa', 'Courier', 8169193101, 75, 'paytm', 8828071232),
+(93, 30, 1, 'bj', 'Courier', 8169193101, 65, 'paytm', 8828071232),
+(94, 24, 1, 'bj', 'Courier', 8169193101, 101, 'paytm', 8828071232);
 
 -- --------------------------------------------------------
 
@@ -356,13 +369,11 @@ INSERT INTO `products` (`product_id`, `farmer_fk`, `product_title`, `product_cat
 (24, 1, 'Arpit Apples', '3', 'Apple', '2020-04-15', 'Apple.jpg', 1500, 101, 'Best Apples grown in Kashmir and handled with love and care', 'apples,apple,best apple', 'no'),
 (25, 1, 'Ramlal Wheat', '1', 'Wheat', '2020-04-15', 'Wheat.jpg', 2000, 80, 'Thin , Fragrant wheat grains grown with love', 'wheat,best quality wheat,best wheat', 'no'),
 (27, 3, 'Arpit Alphonso Mango', '3', 'Mango', '2020-04-15', 'Mango.jpg', 2000, 200, 'Grown with love in Ratnagiri', 'mango,alponso mango,best mango', 'yes'),
-(28, 1, 'Ansh Custard Apple', '3', 'Custard Apple', '2020-04-15', 'custartapple.cms', 500, 45, 'Custard Apple so tasty ,to die for', 'Custard Apple,custart apple, apple, best custard apple', 'yes'),
 (29, 3, 'Omkar Cabbage', '2', 'Cabbage', '2020-04-15', 'Cabbage.jpg', 1500, 50, 'Best Quality Cabbage', 'cabbage, best Cabbage', 'yes'),
-(30, 1, 'Ansh Onion', '2', 'Onion', '2020-04-15', 'Onion.jpg', 1500, 65, 'Grown with love', 'Onion,best onion', 'no'),
+(30, 1, 'Ansh Onion', '2', 'Onion', '2020-04-15', 'Onion.jpg', 1500, 60, 'Grown with love', 'Onion,best onion', 'no'),
 (31, 1, 'Abhi Strawberry', '3', 'Strawberry', '2020-04-15', 'strawberry.jpg', 100, 25, 'Best Strawberrys all over India ', 'Strawberry,best strawberry', 'yes'),
-(32, 1, 'Abhi Orange', '3', 'Orange', '2020-04-15', 'orange.jpg', 1500, 10, 'Best Oranges grown with love in Nagpur', 'Orange,best Orange', 'yes'),
-(37, 1, 'Ram Sugacane', '1', 'Sugarcane', '2020-04-25', 'Sugarcane.jpg', 1000, 50, 'Best Sugarcane', 'Sugarcane', 'yes'),
-(38, 92, 'azim pineapple', '3', 'pineapple', '2020-12-31', 'pineapple.jpg', 50, 30, 'best quality pineapple ', 'best pineapple', 'yes');
+(32, 1, 'Abhi Orange', '3', 'Orange', '2020-04-15', 'orange.jpg', 1500, 15, 'Best Oranges grown with love in Nagpur', 'Orange,best Orange', 'yes'),
+(37, 1, 'Ram Sugacane', '1', 'Sugarcane', '2020-04-25', 'Sugarcane.jpg', 1000, 50, 'Best Sugarcane', 'Sugarcane', 'yes');
 
 -- --------------------------------------------------------
 
@@ -373,7 +384,7 @@ INSERT INTO `products` (`product_id`, `farmer_fk`, `product_title`, `product_cat
 CREATE TABLE `ratings` (
   `product_id` int(255) NOT NULL,
   `phone_number` bigint(10) NOT NULL,
-  `ratings` float NOT NULL,
+  `ratings` int(11) NOT NULL,
   `reviews` varchar(1000) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -383,12 +394,20 @@ CREATE TABLE `ratings` (
 --
 
 INSERT INTO `ratings` (`product_id`, `phone_number`, `ratings`, `reviews`, `date`) VALUES
-(30, 8828071232, 5, 'nice product', '0000-00-00'),
-(30, 8828071232, 1, 'gh', '0000-00-00'),
-(30, 8828071232, 5, 'nice product', '2020-07-27'),
 (24, 8828071232, 5, 'awesome product', '2020-07-27'),
 (19, 8828071232, 2, 'satisfactory product', '2020-07-27'),
-(23, 8828071232, 6, 'bf', '2020-07-27');
+(23, 8828071232, 5, 'best product', '2020-07-27'),
+(19, 8828071232, 3, 'best product', '2020-07-28'),
+(30, 8828071232, 4, 'nice product', '2020-07-28'),
+(29, 8828071232, 4, 'nice product', '2020-07-28'),
+(30, 7666610976, 5, 'best quality', '2020-07-28'),
+(30, 1234567890, 5, 'fresh onions', '2020-07-28'),
+(37, 8828071232, 5, 'best quality', '2020-07-28'),
+(17, 8828071232, 5, 'best quality', '2020-07-28'),
+(19, 7666610976, 5, 'best quality\r\n', '2020-07-28'),
+(25, 7666610976, 5, 'best quality', '2020-07-28'),
+(17, 7666610976, 4, 'better quality ', '2020-07-28'),
+(30, 7666610976, 5, 'nice product', '2020-07-28');
 
 -- --------------------------------------------------------
 
@@ -410,7 +429,8 @@ INSERT INTO `saveforlater` (`product_id`, `phonenumber`) VALUES
 (31, 8369619158),
 (30, 8369619158),
 (3, 9223152967),
-(23, 9223152967);
+(23, 9223152967),
+(30, 8828071232);
 
 -- --------------------------------------------------------
 
@@ -471,6 +491,33 @@ INSERT INTO `slot` (`slot_id`, `shop_id`, `slot`, `vacancy`, `date`, `phonenumbe
 (39, 6, '10:30', 5, '21/04/2020', 1234567890, 40661),
 (40, 6, '12:0', 5, '07/04/2020', 1234567890, 27560),
 (41, 6, '10:30', 5, '22/04/2020', 1234567890, 67549);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscription`
+--
+
+CREATE TABLE `subscription` (
+  `product_id` int(255) NOT NULL,
+  `phone_number` bigint(10) NOT NULL,
+  `start_date` varchar(20) NOT NULL,
+  `end_date` varchar(20) NOT NULL,
+  `days` varchar(100) NOT NULL,
+  `time` varchar(15) NOT NULL,
+  `subscription_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subscription`
+--
+
+INSERT INTO `subscription` (`product_id`, `phone_number`, `start_date`, `end_date`, `days`, `time`, `subscription_id`) VALUES
+(23, 8828071232, '2020-07-30', '2020-08-21', 'sunday,wednesday,', '03:32', 10),
+(29, 8828071232, '2020-07-30', '2020-07-25', 'sunday,wednesday,', '04:32', 11),
+(27, 8828071232, '2020-07-30', '2020-08-30', 'sunday,tuesday,thrusday,saturday,', '04:40', 12),
+(28, 8828071232, '2020-07-30', '2020-08-21', 'sunday,wednesday,saturday,', '04:00', 13),
+(19, 8828071232, '2020-07-29', '2020-08-29', 'sunday,wednesday,saturday,', '21:06', 14);
 
 --
 -- Indexes for dumped tables
@@ -538,6 +585,12 @@ ALTER TABLE `slot`
   ADD KEY `slot_ibfk_1` (`shop_id`);
 
 --
+-- Indexes for table `subscription`
+--
+ALTER TABLE `subscription`
+  ADD PRIMARY KEY (`subscription_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -545,7 +598,7 @@ ALTER TABLE `slot`
 -- AUTO_INCREMENT for table `buyerregistration`
 --
 ALTER TABLE `buyerregistration`
-  MODIFY `buyer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `buyer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -575,13 +628,13 @@ ALTER TABLE `farmerregistration`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `order_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `shopkeeper`
@@ -594,6 +647,12 @@ ALTER TABLE `shopkeeper`
 --
 ALTER TABLE `slot`
   MODIFY `slot_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `subscription`
+--
+ALTER TABLE `subscription`
+  MODIFY `subscription_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
