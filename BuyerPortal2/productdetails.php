@@ -426,12 +426,53 @@ include("../Functions/functions.php");
         $run_query = mysqli_query($con, $query);
         $reviews_query = "select * from ratings where product_id = $product_id";
         $run_query2 = mysqli_query($con, $reviews_query);
-        $average_rating = "SELECT avg(ratings) as avg_rating FROM ratings where product_id = $product_id";
 
+        $average_rating = "SELECT avg(ratings) as avg_rating FROM ratings where product_id = $product_id";
         $run_avg_query = mysqli_query($con, $average_rating);
         while($rows = mysqli_fetch_array($run_avg_query)){
             $avg_rating_final = $rows['avg_rating'];
         }
+
+        $count_query = "SELECT count(ratings) as count_rating FROM ratings where product_id = $product_id";
+        $run_count_query = mysqli_query($con, $count_query);
+        while($rows = mysqli_fetch_array($run_count_query)){
+            $count_rating_total = $rows['count_rating'];
+        }
+
+        $count_5_query = "SELECT count(ratings) as count_rating_5 FROM ratings where product_id = $product_id and ratings = 5";
+        $run_count_5_query = mysqli_query($con, $count_5_query);
+        while($rows = mysqli_fetch_array($run_count_5_query)){
+            $count_5_rating_final = $rows['count_rating_5'];
+        }
+        $count_5_rating_total = $count_5_rating_final * 100/$count_rating_total."%";
+
+        $count_4_query = "SELECT count(ratings) as count_rating_4 FROM ratings where product_id = $product_id and ratings = 4";
+        $run_count_4_query = mysqli_query($con, $count_4_query);
+        while($rows = mysqli_fetch_array($run_count_4_query)){
+            $count_4_rating_final = $rows['count_rating_4'];
+        }
+        $count_4_rating_total = $count_4_rating_final * 100/$count_rating_total."%";
+
+        $count_3_query = "SELECT count(ratings) as count_rating_3 FROM ratings where product_id = $product_id and ratings = 3";
+        $run_count_3_query = mysqli_query($con, $count_3_query);
+        while($rows = mysqli_fetch_array($run_count_3_query)){
+            $count_3_rating_final = $rows['count_rating_3'];
+        }
+        $count_3_rating_total = $count_3_rating_final * 100/$count_rating_total."%";
+
+        $count_2_query = "SELECT count(ratings) as count_rating_2 FROM ratings where product_id = $product_id and ratings = 2";
+        $run_count_2_query = mysqli_query($con, $count_2_query);
+        while($rows = mysqli_fetch_array($run_count_2_query)){
+            $count_2_rating_final = $rows['count_rating_2'];
+        }
+        $count_2_rating_total = $count_2_rating_final * 100/$count_rating_total."%";
+
+        $count_1_query = "SELECT count(ratings) as count_rating_1 FROM ratings where product_id = $product_id and ratings = 1";
+        $run_count_1_query = mysqli_query($con, $count_1_query);
+        while($rows = mysqli_fetch_array($run_count_1_query)){
+            $count_1_rating_final = $rows['count_rating_1'];
+        }
+        $count_1_rating_total = $count_1_rating_final * 100/$count_rating_total."%";
 
         echo "<br>";
         while ($rows = mysqli_fetch_array($run_query)) {
@@ -596,6 +637,12 @@ include("../Functions/functions.php");
                 <br>      
             ";
         }
+        echo "5 -> "."$count_5_rating_total<br>";
+        echo "4 -> "."$count_4_rating_total<br>";
+        echo "3 -> "."$count_3_rating_total<br>";
+        echo "2 -> "."$count_2_rating_total<br>";
+        echo "1 -> "."$count_1_rating_total<br>";
+        echo "<br>";
         echo "</div>";
         echo "<div class='container'>";
         while($rows = mysqli_fetch_array($run_query2)){
