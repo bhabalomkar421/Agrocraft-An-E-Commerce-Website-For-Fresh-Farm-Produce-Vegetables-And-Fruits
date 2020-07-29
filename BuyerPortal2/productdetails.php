@@ -634,11 +634,11 @@ include("../Functions/functions.php");
             ";
         }
         if($count_rating_total != 0){
-            $count_5_rating_total = $count_5_rating_final * 100/$count_rating_total."%";
-            $count_4_rating_total = $count_4_rating_final * 100/$count_rating_total."%";
-            $count_3_rating_total = $count_3_rating_final * 100/$count_rating_total."%";
-            $count_2_rating_total = $count_2_rating_final * 100/$count_rating_total."%";
-            $count_1_rating_total = $count_1_rating_final * 100/$count_rating_total."%";
+            $count_5_rating_total = round($count_5_rating_final * 100/$count_rating_total,2)."%";
+            $count_4_rating_total = round($count_4_rating_final * 100/$count_rating_total,2)."%";
+            $count_3_rating_total = round($count_3_rating_final * 100/$count_rating_total,2)."%";
+            $count_2_rating_total = round($count_2_rating_final * 100/$count_rating_total,2)."%";
+            $count_1_rating_total = round($count_1_rating_final * 100/$count_rating_total,2)."%";
             
             echo "5 -> "."$count_5_rating_total<br>";
             echo "4 -> "."$count_4_rating_total<br>";
