@@ -598,6 +598,7 @@ include("../Functions/functions.php");
         }
         echo "</div>";
         echo "<div class='container'>";
+        echo "<div class='card-deck'>";
         while($rows = mysqli_fetch_array($run_query2)){
             $phone_number = $rows['phone_number'];
             $ratings = $rows['ratings'];
@@ -608,28 +609,55 @@ include("../Functions/functions.php");
             while($rows = mysqli_fetch_array($run_query_to_find_reviewer)){
                 $user = $rows['buyer_name'];
             }
-            echo "<div style='border:1px solid black;margin: 15px;padding-top:10px;padding-left:10px;'>
-                    <h5>$user<h5>
-                ";
-            if($reviews){
-                echo "<div style='margin-left:50px;'>";
-                for($i = 1 ;$i <= $ratings;$i++){
-                    echo "
-                        <img src='star1.png'>
-                    ";
-                }
-                
-                echo "<b>$ratings <b>";
-                echo "</div>";
+     echo"<div class='card'>
+       <img src='https://img.icons8.com/color/288/000000/administrator-male--v1.png' class='card-img-top'/ >
+       <div class='card-body'>
+         <h5 class='card-title text-center'>$user</h5>
+         <p class='card-text text-center'style=font-size:20px>";
+         if($reviews){
+            
+            for($i = 1 ;$i <= $ratings;$i++){
                 echo "
-                    <h5 class='' style = 'margin-left: 35px;'><br> $reviews</h5> 
-                    <h6 style=''> $date </h6>  
-                    </div>";
-                }
+                <i class=' fas fa-star' style=color:goldenrod></i>
+                ";
+            }
+            $x=5-$ratings;
+            for($j = 1 ;$j <=$x;$j++){
+                echo "
+                <i class='far fa-star'></i>
+                ";
+            }
+        }
+        echo "<br>$reviews</p>
+       </div>
+       <div class='card-footer text-center' style=background-color:#292b2c;>
+         <small class='text-muted' style=color:#daa520!important> $date </small>
+       </div>
+     </div>";
+            // echo "<div style='border:1px solid black;margin: 15px;padding-top:10px;padding-left:10px;'>
+            //         <h5>$user<h5>
+            //     ";
+            // if($reviews){
+            //     echo "<div style='margin-left:50px;'>";
+            //     for($i = 1 ;$i <= $ratings;$i++){
+            //         echo "
+            //             <img src='star1.png'>
+            //         ";
+            //     }
+            //     echo"<div class='progress'>
+            //     <div class='progress-bar progress-bar-striped' role='progressbar' style='width:$ratings%' aria-valuenow='10' aria-valuemin='0' aria-valuemax='100'></div>
+            //   </div>";
+            //     echo "<b>$ratings <b>";
+            //     echo "</div>";
+            //     echo "
+            //         <h5 class='' style = 'margin-left: 35px;'><br> $reviews</h5> 
+            //         <h6 style=''> $date </h6>  
+            //         </div>";
+        //         }
             }
         }
         echo "</div>";
-
+        echo "</div>";
     if (isset($_POST['cart'])) {
         if (isset($_POST['quantity'])) {
             $qty = $_POST['quantity'];

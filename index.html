@@ -1,19 +1,77 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>AgroCraft</title>
-	
-<link rel="stylesheet" type="text/css" href="Styles/AgroCraft.css">	
-<link href="https://fonts.googleapis.com/css?family=Cormorant+Infant&display=swap" rel="stylesheet">
 
+	<!-- <link rel="stylesheet" type="text/css" href="Styles/AgroCraft.css">	 -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Cormorant+Infant&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
 </head>
 
-<body >
-	
-	<div id ="WELCOME">WELCOME TO AGROCRAFT <div id="are">ARE YOU A</div></h1>
+<body>
+
+	<!-- <div id ="WELCOME">WELCOME TO AGROCRAFT <div id="are">ARE YOU A</div></h1>
 	<span id="linebreak"></span>
 	<label id="Farmerbutton"><a id = "link" href="auth/FarmerLogin.php">FARMER</a></label>
-	<label id="Buyerbutton"><a id = "link" href="auth/BuyerLogin.php">BUYER</a></label>
-	
+	<label id="Buyerbutton"><a id = "link" href="auth/BuyerLogin.php">BUYER</a></label> -->
+	<nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#292b2c">
+		<a class="float-left" href="bhome.php">
+			<img src="./BuyerPortal2/agro.png" class="float-left mr-5 ml-0 " alt="Logo" style="height:50px;">
+
+		</a>
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item" style="font-size:20px;color:rgb(15, 187, 15)"> <a class="nav-linkss">AGROCRAFT - A
+						place for your satisfaction !</li></a>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="auth/FarmerLogin.php" style="font-size:20px;color:rgb(15, 187, 15)">Farmers</a>
+					<!-- <span class="sr-only">(current)</span></a> -->
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" style="padding-left:10px;font-size:20px;color:rgb(15, 187, 15)" href="auth/BuyerLogin.php">Buyers</a>
+				</li>
+
+			</ul>
+
+		</div>
+	</nav>
+	<div class="containers">
+		<br><br>	<br><br>
+		<div class="d-flex justify-content-between  align-items-center" >
+			<div style="margin-left:3%;margin-right:5%;">
+				<h1><b>STRAIGHT FROM THE FARMS IN TO YOUR HOUSE</b></h1>
+				<br>
+				<a href="auth/FarmerLogin.php"><button type="button" class="btn btn-lg  border-dark"  style="color:back;background-color: #28a745;">FARMER</button></a>
+			<a href="auth/BuyerLogin.php">	<button type="button" class="btn btn-lg  border-dark" style="color:back;background-color: #28a745;">BUYER</button></a>
+			</div>
+
+			<div style="margin-right:5%">
+				<img class="shadow-lg p-3 mb-5  rounded" src="main2.jpg" >
+			</div>
+		
+		</div>
+	</div>
+
+
 </body>
+
 </html>
