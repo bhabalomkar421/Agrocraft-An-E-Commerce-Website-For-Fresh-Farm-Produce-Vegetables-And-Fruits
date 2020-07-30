@@ -95,7 +95,7 @@ $sessphonenumber = $_SESSION['phonenumber'];
 
 <div class="container" >
     <br>
-    <div class="text-center"><h2><b>Your Profile</h2></b></div>
+    <div class="text-center"><h2><b>Your Product</h2></b></div>
         <div class="form">
             <form action="subEditProduct.php" method=POST>
                 <?php      
